@@ -27,3 +27,7 @@ Funtube正在开发中，欢迎您提 [issue](https://github.com/geGDVS/Funtube/
 4. 如果没有静态ip，那就把replitdb改成别的 ~~改完发我一份~~
 
 5. 测试Funtube是否正常运行。
+
+## 其他
+
+二次开发请注明[本仓库](https://github.com/geGDVS/funtube/)地址。
