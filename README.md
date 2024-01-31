@@ -2,7 +2,7 @@
 
 ## 介绍
 
-立刻体验：~~[Funtube](https://funtube.lolunge.repl.co/)~~ （replit已暂停免费服务，操你妈的）
+~~立刻体验：[Funtube](https://funtube.lolunge.repl.co/)~~ （replit已暂停免费服务，操你妈的资本家replit）
 
 Funtube整体使用逻辑、大多数前端代码都**tm**是我自己写的。
 
