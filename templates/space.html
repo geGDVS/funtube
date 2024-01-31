@@ -1,0 +1,53 @@
+{% extends "base-music.html" %}
+
+{% block title %} {{db.name}}的个人空间 - Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/">Funtube</a></span>
+<div class="mdui-toolbar-spacer"></div>
+<a target="_blank" href="/msg" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '消息'}">
+    <i class="mdui-icon material-icons">message</i>
+</a>
+<a target="_blank" href="/upload" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</a>
+{% endblock %}
+
+{% block subDiv %}
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">info</i>
+        <div class="mdui-list-item-content"><strong>信息</strong></div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+        <div class="mdui-list-item-content">姓名：{{db.name}}</div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">tag_faces</i>
+        <div class="mdui-list-item-content">头像：<img class="mdui-img-circle" src="static/face/{{db.name}}/face.jpg" height=50 /></div>
+    </li>
+</ul>
+{% endblock %}
+
+{% block sideDiv %}
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">more_vert</i>
+        <div class="mdui-list-item-content"><strong>操作</strong></div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">arrow_forward</i>
+        <div class="mdui-list-item-content">
+        <a href='/logout' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">退出登录</a>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">tag_faces</i>
+        <div class="mdui-list-item-content">
+        <a href='/face' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">更换头像</a>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">delete</i>
+        <div class="mdui-list-item-content">
+        <a href='/delete-user' class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-red">注销账号</a>
+    </li>
+</ul>
+{% endblock %}

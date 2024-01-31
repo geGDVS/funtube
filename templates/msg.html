@@ -1,0 +1,24 @@
+{% extends "base-message.html" %}
+
+{% block title %} 消息中心 - Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/check">Funtube</a></span>
+<div class="mdui-toolbar-spacer"></div>
+<a target="_blank" href="/space" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '个人中心'}"><img class="mdui-img-circle" src="static/face/{{db.name}}/face.jpg" height=45 /></a>
+<a target="_blank" href="/upload" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</a>
+{% endblock %}
+        
+{% block mainDiv %}
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+        <div class="mdui-list-item-content"><strong>消息</strong></div>
+    </li>
+    {% for line in db.comment %}
+    <li class="mdui-list-item mdui-ripple">
+        {{line}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

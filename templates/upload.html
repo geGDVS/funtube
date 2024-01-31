@@ -1,0 +1,28 @@
+{% extends "base-middle.html" %}
+
+{% block title %} 创作中心 - Funtube {% endblock %}\
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/upload">Funtube创作中心</a></span>
+<a target="_blank" href="/">主站</a>
+{% endblock %}    
+
+{% block mainDiv %}
+<form method="post" action="/upload" enctype="multipart/form-data">
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">Title</label>
+        <input class="mdui-textfield-input" type="text" name='title'/>
+    </div>
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">Note</label>
+        <textarea class="mdui-textfield-input" name='note'></textarea>
+    </div><br>
+    <label>Music (Video): </label>
+    <input type="file" class="mdui-btn mdui-btn-raised mdui-ripple" name="music"/><br><br>
+    <label>封面: </label>
+    <input type="file" class="mdui-btn mdui-btn-raised mdui-ripple" name="pic"/><br><br>
+    <label>歌词(txt): </label>
+    <input type="file" class="mdui-btn mdui-btn-raised mdui-ripple" name="word"/><br><br>
+    <button type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</button>
+</form>
+{% endblock %} 

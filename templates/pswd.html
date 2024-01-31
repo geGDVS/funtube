@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base-middle.html" %}
+
+{% block title %} 审核中心 - Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/check">Funtube审核中心</a></span>
+<a target="_blank" href="/">主站</a>
+{% endblock %}
+
+{% block mainDiv %}
+<h1>登录</h1>
+<form method="post" action="/check" enctype="multipart/form-data">
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">Password</label>
+        <input class="mdui-textfield-input" type="password" name='pswd'/>
+    </div><br><br>
+    <button type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">继续</button>
+</form>
+{% endblock %}

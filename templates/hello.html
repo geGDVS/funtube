@@ -1,0 +1,32 @@
+{% extends "base-main.html" %}
+
+{% block title %} Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/check">Funtube</a></span>
+<div class="mdui-toolbar-spacer"></div>
+{% if login == 'Y' %}
+<a target="_blank" href="/space" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '个人中心'}"><img class="mdui-img-circle" src="static/face/{{name}}/face.jpg" height=45 /></a>
+<a target="_blank" href="/msg" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '消息'}"><i class="mdui-icon material-icons">message</i></a>
+<a target="_blank" href="/upload" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</a>
+{% else %}
+<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" mdui-dialog="{target: '#loginDialog'}">登录</a>
+{% endif %}
+{% endblock %}
+
+{% block mainDiv %}
+{% for var in db %}
+<div class="mdui-col-md-2 mdui-col-sm-6">
+    <div class="mdui-grid-tile">
+        <a href="/music/{{var.id}}" target='_blank'><img src="static/confirmed/{{var.id}}/pic.jpg"/></a>
+        <div class="mdui-grid-tile-actions">
+            <div class="mdui-grid-tile-text">
+                <div class="mdui-grid-tile-title">{{var.title}}</div>
+                <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">person</i>{{var.author}}</div>
+                <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">play_arrow</i>{{var.played}}&nbsp;&nbsp;&nbsp;<i class="mdui-icon material-icons">message</i>{{ var.comment | length }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

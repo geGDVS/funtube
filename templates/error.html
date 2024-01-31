@@ -1,0 +1,23 @@
+{% extends "base-middle.html" %}
+
+{% block title %} Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/">Funtube</a></span>
+{% endblock %}
+
+{% block mainDiv %}
+<h1>{{msg}}</h1>
+<form method="post" action="/login" enctype="multipart/form-data">
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">Name</label>
+        <input class="mdui-textfield-input" type="text" name='name' required/>
+    </div>
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">Password</label>
+        <input class="mdui-textfield-input" type="password" name='pswd' required/>
+    </div><br>
+    <div class="h-captcha" data-sitekey="3be7bccb-fcba-4c65-b766-563106c2d02c" name='h-captcha-response'></div><br>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type='submit'>登录/注册</button>
+</form>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base-music.html" %}
+
+{% block title %} {{db.title}} {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/">Funtube</a></span>
+<div class="mdui-toolbar-spacer"></div>
+{% if login == 'Y' %}
+<a target="_blank" href="/space" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '个人中心'}"><img class="mdui-img-circle" src="static/face/{{name}}/face.jpg" height=45 /></a>
+<a target="_blank" href="/msg" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '消息'}"><i class="mdui-icon material-icons">message</i></a>
+<a target="_blank" href="/upload" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</a>
+{% else %}
+<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" mdui-dialog="{target: '#loginDialog'}">登录</a>
+{% endif %}
+{% endblock %}
+
+{% block mainDiv %}
+<h1>{{db.title}}</h1>
+<div class="mdui-video-container">
+    <iframe src="/static/confirmed/{{db.id}}/music.{{db.type}}" frameborder="0" allowfullscreen></iframe>
+</div>
+{% endblock %}
+
+{% block subDiv %}
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">info</i>
+        <div class="mdui-list-item-content"><strong>信息</strong></div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+        <div class="mdui-list-item-content">作者：{{db.author}}</div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">text_format</i>
+        <div class="mdui-list-item-content">
+            歌词：<a href="/static/{{db.status}}/{{db.id}}/word.txt" target="_blank">点此查看</a>
+        </div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">play_arrow</i>
+        <div class="mdui-list-item-content">播放量：{{db.played}}</div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">event_note</i>
+        <div class="mdui-list-item-content">简介：{{db.note}}</div>
+    </li>
+</ul>
+{% endblock %}
+
+{% block sideDiv %}
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">more_vert</i>
+        <div class="mdui-list-item-content"><strong>操作</strong></div>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+        <div class="mdui-list-item-content">
+            {% if login == 'Y' %}
+            <form method="post" action="/music/{{db.id}}" enctype="multipart/form-data">
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">评论</label>
+                    <input class="mdui-textfield-input" type="text" name='comment' required/>
+                </div><br>
+                <button type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">发送</button>
+            </form>
+            {% else %}
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">登录后才可评论！</label>
+                <input class="mdui-textfield-input" type="text" disabled/>
+            </div>
+            {% endif %}
+            <br>
+            <h1>评论({{ db.comment | length }})</h1>
+            {% for line in db.comment %}
+            <strong>{{line.author}}: </strong>{{line.content}}<br><br>
+            {% endfor %}
+        </div>
+    </li>
+</ul>
+{% endblock %}

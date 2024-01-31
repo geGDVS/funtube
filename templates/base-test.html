@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN" class="mdui-theme-auto">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
+        <meta name="renderer" content="webkit"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.2/mdui.css">
+        <script src="https://unpkg.com/mdui@2.0.2/mdui.global.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+        <link rel="shortcut icon" href="static/favicon.ico">
+        <title>Funtube</title>
+    </head>
+    <body class="mdui-prose">
+        <div style="position: relative;overflow: hidden">
+            <mdui-top-app-bar
+              scroll-behavior="hide"
+              scroll-threshold="30"
+              scroll-target=".example-scroll-behavior-elevate"
+            >
+                <mdui-top-app-bar-title><a href="/">Funtube</a></mdui-top-app-bar-title>
+                <div style="flex-grow: 1"></div>
+                {% if login == 'Y' %}
+                <a href="/space" target="_blank">
+                    <mdui-avatar>
+                        <mdui-tooltip content="个人中心">
+                            <img src="static/face/{{name}}/face.jpg"/>
+                        </mdui-tooltip>
+                    </mdui-avatar>
+                </a>
+                <mdui-fab icon="message--rounded" href="/msg" target="_blank"  size="small"></mdui-fab>
+                <mdui-button href="upload" target="_blank">投稿</mdui-button>
+                {% else %}
+                <mdui-dialog
+                  close-on-overlay-click
+                  class="example-action example-headline-slot"
+                >
+                    <span slot="headline">登录</span>
+                    <form method="post" action="/login" enctype="multipart/form-data">
+                        <mdui-text-field maxlength="20" counter label="账号" name='name'></mdui-text-field>
+                        <mdui-text-field type="password" toggle-password label="密码" name='pswd'></mdui-text-field><br><br>
+                        <mdui-button slot="action" variant="text">取消</mdui-button>
+                        <mdui-button slot="action" variant="tonal" type="submit">登录/注册</mdui-button>
+                    </form>
+                </mdui-dialog>
+                <mdui-button>登录</mdui-button>
+                {% endif %}
+            </mdui-top-app-bar>
+
+            <div class="example-scroll-behavior-elevate">
+                {% for var in db %}
+                <mdui-card variant="elevated" style="margin:25px; padding:25px;">
+                    <mdui-fab extended icon="music_video--rounded" size="large" href="/music/{{var.id}}" target="_blank">{{var.title}}</mdui-fab><br>
+                    <mdui-segmented-button-group full-width>
+                        <mdui-segmented-button icon="person--rounded">{{var.author}}</mdui-segmented-button>
+                        <mdui-segmented-button icon="play_arrow--rounded" href="/music/{{var.id}}" target="_blank">{{var.played}}</mdui-segmented-button>
+                        <mdui-segmented-button icon="message--rounded" href="/music/{{var.id}}" target="_blank">{{ var.comment | length }}</mdui-segmented-button>
+                    </mdui-segmented-button-group>
+                </mdui-card>
+                {% endfor %}
+            </div>
+        </div>
+      
+
+
+        <script>
+            const dialog = document.querySelector(".example-action");
+            const openButton = dialog.nextElementSibling;
+            const closeButton = dialog.querySelector("mdui-button");
+
+            openButton.addEventListener("click", () => dialog.open = true);
+            closeButton.addEventListener("click", () => dialog.open = false);
+        </script>
+    </body>
+</html>

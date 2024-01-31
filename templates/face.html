@@ -1,0 +1,27 @@
+{% extends "base-middle.html" %}
+
+{% block title %} Funtube {% endblock %}
+
+{% block toolbar %}
+<span class="mdui-typo-title"><a href="/">Funtube</a></span>
+<div class="mdui-toolbar-spacer"></div>
+<a target="_blank" href="/space" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '个人中心'}">
+    <img class="mdui-img-circle" src="static/face/{{name}}/face.jpg" height=45 />
+</a>
+<a target="_blank" href="/msg" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '消息'}"><i class="mdui-icon material-icons">message</i></a>
+<a target="_blank" href="/upload" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">投稿</a>
+{% endblock %}
+
+{% block mainDiv %}
+<h1>更换头像</h1>
+<form method="post" action="/face-change" enctype="multipart/form-data">
+    <label>上传头像:</label>
+    <input type="file" class="mdui-btn mdui-btn-raised mdui-ripple" name="face"/><br><br>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type='submit'>更新</button>
+</form>
+{% endblock %}
+
+{% block subDiv %}
+<h1>当前头像</h1>
+<img class="mdui-img-circle" src="static/face/{{name}}/face.jpg" height=500 />
+{% endblock %}
