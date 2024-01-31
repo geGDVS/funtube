@@ -22,7 +22,7 @@ Funtube正在开发中，欢迎您提 [issue](https://github.com/geGDVS/Funtube/
 
 2. 进入Funtube源代码目录，运行`main.py`。
 
-3. 根据**报错信息**安装依赖库并配置数据库。
+3. 根据**报错信息**安装依赖库并配置数据库。 
    如果没有静态ip，那就把replitdb改成别的 ~~改完发我一份~~
 
 4. 测试Funtube是否正常运行。
